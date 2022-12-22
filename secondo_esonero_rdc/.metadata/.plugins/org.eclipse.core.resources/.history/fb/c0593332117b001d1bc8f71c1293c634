@@ -1,0 +1,61 @@
+/*
+ ============================================================================
+ Name        : Server.c
+ Author      : Belisario Cappiello
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#if defined WIN32
+	#include <winsock2.h>
+#else
+	#define closesocket close
+	#include <sys/socket.h>
+	#include <arpa/inet.h>
+	#include <unistd.h>
+#endif
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <Windows.h>
+#include <ctype.h>
+
+#define ECHOMAX 255
+#define PROTOPORT 60001
+#define NO_ERROR 0
+#define DEFAULT_ADDRESS "127.0.0.1"
+
+void errorHandler(char *);
+void clearWinSock();
+int isNumber(char *);
+int checkChar(char *);
+void tokenizer(char * token[4], char *);
+
+int main(int argc, char *argv[]) {
+
+	int port;
+	char * to_send_address_server = "";
+
+	if (argc > 1){
+		to_send_address_server = argv[1];
+		port = atoi(argv[2]);
+	}else{
+		port = PROTOPORT;
+		to_send_address_server = DEFAULT_ADDRESS;
+		if (port < 0){
+			printf("%d is a bad port number\n", port);
+			return 0;
+		}
+	}
+
+	#if defined WIN32
+		WSADATA wsa_data;
+		int result = WSAStartup(MAKEWORD(2, 2), &wsa_data);
+		if (result != NO_ERROR){
+			printf("%s\n", "Start up failed");
+			return -1;
+		}
+		printf("%s\n", "Start up done correctly");
+	#endif

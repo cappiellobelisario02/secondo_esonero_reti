@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Client.c/src/Client.c.c&apos; to &apos;Client.c&apos;" description="Rename resource &apos;Client.c.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Client.c.c" name="Client.c" stamp="1670929697691" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Client/src/DNS.txt&apos; to &apos;ClientDNS.txt&apos;" description="Rename resource &apos;DNS.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/DNS.txt" name="ClientDNS.txt" stamp="1671017667074" updateReferences="true"/>
+</session>

@@ -1,0 +1,136 @@
+/*
+ ============================================================================
+ Name        : Server.c
+ Author      : Belisario Cappiello
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#if defined WIN32
+	#include <winsock2.h>
+#else
+	#define closesocket close
+	#include <sys/socket.h>
+	#include <arpa/inet.h>
+	#include <unistd.h>
+#endif
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <Windows.h>
+#include <ctype.h>
+#include <string.h>
+
+#define ECHOMAX 255
+#define PROTOPORT 60001
+#define NO_ERROR 0
+#define DEFAULT_ADDRESS "127.0.0.1"
+
+void errorHandler(char *);
+void clearWinSock();
+int isNumber(char *);
+int checkChar(char *);
+void tokenizer(char * token[4], char *);
+
+int main(int argc, char *argv[]) {
+
+	int port;
+	char * to_send_address_server = "";
+
+	if (argc > 1){
+		to_send_address_server = argv[1];
+		port = atoi(argv[2]);
+	}else{
+		port = PROTOPORT;
+		to_send_address_server = DEFAULT_ADDRESS;
+		if (port < 0){
+			printf("%d is a bad port number\n", port);
+			return 0;
+		}
+	}
+
+	#if defined WIN32
+		WSADATA wsa_data;
+		int result = WSAStartup(MAKEWORD(2, 2), &wsa_data);
+		if (result != NO_ERROR){
+			printf("%s\n", "Start up failed");
+			return -1;
+		}
+		printf("%s\n", "Start up done correctly");
+	#endif
+
+	int socket_udp;
+	socket_udp = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	if(socket_udp < NO_ERROR){
+		errorHandler("Socket creation failed");
+	}
+	printf("%s\n", "Socket created successfully");
+
+	struct sockaddr_in server_address;
+	unsigned int server_address_size;
+	server_address_size = sizeof(server_address);
+	memset(&server_address, 0, server_address_size);
+	server_address.sin_family = PF_INET;
+	server_address.sin_port = htons(port);
+	server_address.sin_addr.s_addr = inet_addr(to_send_address_server);
+
+	return 0;
+}
+
+void clearWinSock(){
+	#if defined WIN32
+		WSACleanup();
+	#endif
+}
+
+void errorHandler(char * string){
+	printf("%s\n", string);
+}
+
+void tokenizer(char * tokens[4], char * string){
+	char * operation = string;
+	short temp = 0;
+	char * token_string;
+	token_string = strtok(operation, " ");
+
+	if(!checkChar(token_string)){
+		tokens[0] = "=";
+		tokens[1] = NULL;
+		tokens[2] = NULL;
+		tokens[3] = "1";
+	}else{
+		while (token_string != NULL){
+			tokens[temp] = token_string;
+			temp++;
+			token_string = strtok(NULL, " ");
+		}
+		if(temp == 3){
+			int temp_var = temp;
+			char str_temp_var[ECHOMAX];
+			memset(str_temp_var, 0, ECHOMAX);
+			itoa(temp_var, str_temp_var, 10);
+			tokens[temp] = str_temp_var;
+		}
+	}
+}
+
+int checkChar(char * string){
+	if(string[0] == '+' || string[0] == '-' || string[0] == 'x' || string[0] == '/'){
+		return 1;
+	}
+	return 0;
+}
+
+int isNumber(char * string){
+	int length = strlen(string);
+	for (int i = 0; i < length; i++)
+		if (!isdigit(string[i])){
+			printf ("Entered input is not a number\n");
+			return 1;;
+		}
+
+	return 0;
+}
+

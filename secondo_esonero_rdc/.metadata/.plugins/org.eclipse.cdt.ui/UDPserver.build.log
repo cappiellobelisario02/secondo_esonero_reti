@@ -1,0 +1,7 @@
+10:29:36 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+gcc -o UDPserver "src\\server.o" -lwsock32 -lwsock32 
+
+10:29:37 Build Finished. 0 errors, 0 warnings. (took 601ms)
+

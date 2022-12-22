@@ -1,0 +1,689 @@
+12:15:07 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+12:35:46 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+..\src\Client.c: In function 'main':
+..\src\Client.c:46:28: warning: implicit declaration of function 'toIpAddress' [-Wimplicit-function-declaration]
+   to_send_address_server = toIpAddress(tokens[0]);
+                            ^~~~~~~~~~~
+..\src\Client.c:46:26: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+   to_send_address_server = toIpAddress(tokens[0]);
+                          ^
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+src\Client.o: In function `main':
+C:\Users\sario\OneDrive\Desktop\secondo_esonero_rdc\Client\Debug/../src/Client.c:46: undefined reference to `toIpAddress'
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Server
+12:36:01 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+..\src\Client.c: In function 'main':
+..\src\Client.c:46:26: error: void value not ignored as it ought to be
+   to_send_address_server = toIpAddress(tokens[0]);
+                          ^
+Info: Nothing to build for Server
+12:37:01 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+12:50:17 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+..\src\Client.c: In function 'main':
+..\src\Client.c:41:17: warning: unused variable 'addr' [-Wunused-variable]
+  struct in_addr addr;
+                 ^~~~
+..\src\Client.c:39:19: warning: unused variable 'remoteHost' [-Wunused-variable]
+  struct hostent * remoteHost;
+                   ^~~~~~~~~~
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+13:01:12 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+..\src\Client.c: In function 'main':
+..\src\Client.c:46:13: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+   host_name = remote_host->h_addr_list;
+             ^
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+13:01:25 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+13:01:48 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+13:17:09 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+13:17:10 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+13:21:07 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+..\src\Server.c: In function 'main':
+..\src\Server.c:107:85: error: 'remote_host' undeclared (first use in this function)
+    printf("%s%s%s%s%s%s\n", "Requested operation '", client_data, "' from client ", remote_host->h_name, ", ip ", inet_ntoa(client_address.sin_addr));
+                                                                                     ^~~~~~~~~~~
+..\src\Server.c:107:85: note: each undeclared identifier is reported only once for each function it appears in
+Info: Nothing to build for Client
+13:27:51 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+..\src\Server.c: In function 'main':
+..\src\Server.c:88:27: error: incompatible type for argument 1 of 'inet_addr'
+   addr.s_addr = inet_addr(client_address.sin_addr);
+                           ^~~~~~~~~~~~~~
+In file included from c:\mingw\include\winsock2.h:62:0,
+                 from ..\src\Server.c:12:
+c:\mingw\include\winsock.h:590:42: note: expected 'const char *' but argument is of type 'struct in_addr'
+ WINSOCK_API_LINKAGE unsigned long PASCAL inet_addr (const char *);
+                                          ^~~~~~~~~
+Info: Nothing to build for Client
+13:29:36 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for Client
+13:32:35 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+13:35:09 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+13:45:13 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+10:22:30 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+10:22:31 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+10:22:32 **** Rebuild of configuration Debug for project UDPclient ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\client.o" "..\\src\\client.c" 
+..\src\client.c: In function 'main':
+..\src\client.c:142:25: warning: passing argument 2 of 'sendto' from incompatible pointer type [-Wincompatible-pointer-types]
+    sendto(clientSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&serverAddress, clientLength);
+                         ^~~~
+In file included from ..\src\client.c:4:0:
+c:\mingw\include\winsock.h:598:32: note: expected 'const char *' but argument is of type 'struct operationData *'
+ WINSOCK_API_LINKAGE int PASCAL sendto (SOCKET, const char *, int, int, const struct sockaddr *, int);
+                                ^~~~~~
+..\src\client.c:143:27: warning: passing argument 2 of 'recvfrom' from incompatible pointer type [-Wincompatible-pointer-types]
+    recvfrom(clientSocket, res, sizeof(struct result), 0, (struct sockaddr*)&serverAddress, clientLength);
+                           ^~~
+In file included from ..\src\client.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'char *' but argument is of type 'struct result *'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+..\src\client.c:143:92: warning: passing argument 6 of 'recvfrom' makes pointer from integer without a cast [-Wint-conversion]
+    recvfrom(clientSocket, res, sizeof(struct result), 0, (struct sockaddr*)&serverAddress, clientLength);
+                                                                                            ^~~~~~~~~~~~
+In file included from ..\src\client.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'int *' but argument is of type 'int'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+gcc -o UDPclient "src\\client.o" 
+src\client.o: In function `clearwinsock':
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:29: undefined reference to `WSACleanup@0'
+src\client.o: In function `main':
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:52: undefined reference to `gethostbyname@4'
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:68: undefined reference to `inet_ntoa@4'
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:79: undefined reference to `WSAStartup@8'
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:89: undefined reference to `socket@12'
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:94: undefined reference to `closesocket@4'
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:104: undefined reference to `inet_addr@4'
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:105: undefined reference to `htons@4'
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:142: undefined reference to `sendto@24'
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:143: undefined reference to `recvfrom@24'
+C:\Users\sario\Downloads\UDP\UDPclient\Debug/../src/client.c:154: undefined reference to `closesocket@4'
+collect2.exe: error: ld returned 1 exit status
+10:22:33 **** Rebuild of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+..\src\server.c: In function 'main':
+..\src\server.c:100:27: warning: passing argument 2 of 'recvfrom' from incompatible pointer type [-Wincompatible-pointer-types]
+    recvfrom(serverSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&clientAddress, &clientLength);
+                           ^~~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'char *' but argument is of type 'struct operationData *'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+..\src\server.c:123:25: warning: passing argument 2 of 'sendto' from incompatible pointer type [-Wincompatible-pointer-types]
+    sendto(serverSocket, res, sizeof(struct result), 0, (struct sockaddr*)&clientAddress, clientLength);
+                         ^~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:598:32: note: expected 'const char *' but argument is of type 'struct result *'
+ WINSOCK_API_LINKAGE int PASCAL sendto (SOCKET, const char *, int, int, const struct sockaddr *, int);
+                                ^~~~~~
+gcc -o UDPserver "src\\server.o" 
+src\server.o: In function `clearwinsock':
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:26: undefined reference to `WSACleanup@0'
+src\server.o: In function `main':
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:46: undefined reference to `WSAStartup@8'
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:55: undefined reference to `socket@12'
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:67: undefined reference to `inet_addr@4'
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:68: undefined reference to `htons@4'
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:71: undefined reference to `bind@12'
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:100: undefined reference to `recvfrom@24'
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:104: undefined reference to `inet_ntoa@4'
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:104: undefined reference to `inet_addr@4'
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:105: undefined reference to `gethostbyaddr@12'
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:109: undefined reference to `inet_ntoa@4'
+C:\Users\sario\Downloads\UDP\UDPserver\Debug/../src/server.c:123: undefined reference to `sendto@24'
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+10:23:15 **** Incremental Build of configuration Debug for project UDPclient ****
+Info: Internal Builder is used for build
+gcc -o UDPclient "src\\client.o" -lwsock32 -lwsock32 
+10:23:15 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -o UDPserver "src\\server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+Info: Nothing to build for UDPserver
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+Info: Nothing to build for UDPserver
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+Info: Nothing to build for UDPserver
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+10:25:26 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+..\src\server.c: In function 'main':
+..\src\server.c:100:27: warning: passing argument 2 of 'recvfrom' from incompatible pointer type [-Wincompatible-pointer-types]
+    recvfrom(serverSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&clientAddress, clientLength);
+                           ^~~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'char *' but argument is of type 'struct operationData *'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+..\src\server.c:100:100: warning: passing argument 6 of 'recvfrom' makes pointer from integer without a cast [-Wint-conversion]
+    recvfrom(serverSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&clientAddress, clientLength);
+                                                                                                    ^~~~~~~~~~~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'int *' but argument is of type 'int'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+..\src\server.c:123:25: warning: passing argument 2 of 'sendto' from incompatible pointer type [-Wincompatible-pointer-types]
+    sendto(serverSocket, res, sizeof(struct result), 0, (struct sockaddr*)&clientAddress, clientLength);
+                         ^~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:598:32: note: expected 'const char *' but argument is of type 'struct result *'
+ WINSOCK_API_LINKAGE int PASCAL sendto (SOCKET, const char *, int, int, const struct sockaddr *, int);
+                                ^~~~~~
+gcc -o UDPserver "src\\server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+10:26:08 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+..\src\server.c: In function 'main':
+..\src\server.c:100:27: warning: passing argument 2 of 'recvfrom' from incompatible pointer type [-Wincompatible-pointer-types]
+    recvfrom(serverSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&clientAddress, &clientLength);
+                           ^~~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'char *' but argument is of type 'struct operationData *'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+..\src\server.c:123:25: warning: passing argument 2 of 'sendto' from incompatible pointer type [-Wincompatible-pointer-types]
+    sendto(serverSocket, res, sizeof(struct result), 0, (struct sockaddr*)&clientAddress, clientLength);
+                         ^~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:598:32: note: expected 'const char *' but argument is of type 'struct result *'
+ WINSOCK_API_LINKAGE int PASCAL sendto (SOCKET, const char *, int, int, const struct sockaddr *, int);
+                                ^~~~~~
+gcc -o UDPserver "src\\server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+10:26:47 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+..\src\server.c: In function 'main':
+..\src\server.c:100:27: warning: passing argument 2 of 'recvfrom' from incompatible pointer type [-Wincompatible-pointer-types]
+    recvfrom(serverSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&clientAddress, &clientLength);
+                           ^~~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'char *' but argument is of type 'struct operationData *'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+..\src\server.c:123:25: warning: passing argument 2 of 'sendto' from incompatible pointer type [-Wincompatible-pointer-types]
+    sendto(serverSocket, res, sizeof(struct result), 0, (struct sockaddr*)&clientAddress, &clientLength);
+                         ^~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:598:32: note: expected 'const char *' but argument is of type 'struct result *'
+ WINSOCK_API_LINKAGE int PASCAL sendto (SOCKET, const char *, int, int, const struct sockaddr *, int);
+                                ^~~~~~
+..\src\server.c:123:90: warning: passing argument 6 of 'sendto' makes integer from pointer without a cast [-Wint-conversion]
+    sendto(serverSocket, res, sizeof(struct result), 0, (struct sockaddr*)&clientAddress, &clientLength);
+                                                                                          ^
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:598:32: note: expected 'int' but argument is of type 'int *'
+ WINSOCK_API_LINKAGE int PASCAL sendto (SOCKET, const char *, int, int, const struct sockaddr *, int);
+                                ^~~~~~
+gcc -o UDPserver "src\\server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+10:26:59 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+..\src\server.c: In function 'main':
+..\src\server.c:100:27: warning: passing argument 2 of 'recvfrom' from incompatible pointer type [-Wincompatible-pointer-types]
+    recvfrom(serverSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&clientAddress, &clientLength);
+                           ^~~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'char *' but argument is of type 'struct operationData *'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+..\src\server.c:123:25: warning: passing argument 2 of 'sendto' from incompatible pointer type [-Wincompatible-pointer-types]
+    sendto(serverSocket, res, sizeof(struct result), 0, (struct sockaddr*)&clientAddress, clientLength);
+                         ^~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:598:32: note: expected 'const char *' but argument is of type 'struct result *'
+ WINSOCK_API_LINKAGE int PASCAL sendto (SOCKET, const char *, int, int, const struct sockaddr *, int);
+                                ^~~~~~
+gcc -o UDPserver "src\\server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+10:28:07 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+..\src\server.c: In function 'main':
+..\src\server.c:100:27: warning: passing argument 2 of 'recvfrom' from incompatible pointer type [-Wincompatible-pointer-types]
+    recvfrom(serverSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&clientAddress, &clientLength);
+                           ^~~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'char *' but argument is of type 'struct operationData *'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+..\src\server.c:123:4: warning: statement with no effect [-Wunused-value]
+    sendto
+    ^~~~~~
+..\src\server.c:124:4: error: expected ';' before 'sendto'
+    sendto(serverSocket, res, sizeof(struct result), 0, (struct sockaddr*)&clientAddress, clientLength);
+    ^~~~~~
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+10:28:15 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+..\src\server.c: In function 'main':
+..\src\server.c:100:27: warning: passing argument 2 of 'recvfrom' from incompatible pointer type [-Wincompatible-pointer-types]
+    recvfrom(serverSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&clientAddress, &clientLength);
+                           ^~~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'char *' but argument is of type 'struct operationData *'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+..\src\server.c:123:25: warning: passing argument 2 of 'sendto' from incompatible pointer type [-Wincompatible-pointer-types]
+    sendto(serverSocket, res, sizeof(struct result), 0, (struct sockaddr*)&clientAddress, clientLength);
+                         ^~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:598:32: note: expected 'const char *' but argument is of type 'struct result *'
+ WINSOCK_API_LINKAGE int PASCAL sendto (SOCKET, const char *, int, int, const struct sockaddr *, int);
+                                ^~~~~~
+gcc -o UDPserver "src\\server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+10:29:08 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+..\src\server.c: In function 'main':
+..\src\server.c:100:27: warning: passing argument 2 of 'recvfrom' from incompatible pointer type [-Wincompatible-pointer-types]
+    recvfrom(serverSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&clientAddress, &clientLength);
+                           ^~~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'char *' but argument is of type 'struct operationData *'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+gcc -o UDPserver "src\\server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+10:29:26 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+..\src\server.c: In function 'main':
+..\src\server.c:100:27: warning: passing argument 2 of 'recvfrom' from incompatible pointer type [-Wincompatible-pointer-types]
+    recvfrom(serverSocket, data, sizeof(struct operationData), 0, (struct sockaddr*)&clientAddress, &clientLength);
+                           ^~~~
+In file included from ..\src\server.c:4:0:
+c:\mingw\include\winsock.h:596:32: note: expected 'char *' but argument is of type 'struct operationData *'
+ WINSOCK_API_LINKAGE int PASCAL recvfrom (SOCKET, char *, int, int, struct sockaddr *, int *);
+                                ^~~~~~~~
+gcc -o UDPserver "src\\server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for UDPclient
+10:29:36 **** Incremental Build of configuration Debug for project UDPserver ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\server.o" "..\\src\\server.c" 
+gcc -o UDPserver "src\\server.o" -lwsock32 -lwsock32 
+10:35:37 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+..\src\Client.c: In function 'main':
+..\src\Client.c:44:13: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   host_name = strtok(argv[1], ":");
+             ^
+..\src\Client.c:46:31: warning: passing argument 1 of 'gethostbyname' makes pointer from integer without a cast [-Wint-conversion]
+   remote_host = gethostbyname(host_name);
+                               ^~~~~~~~~
+In file included from c:\mingw\include\winsock2.h:62:0,
+                 from ..\src\Client.c:12:
+c:\mingw\include\winsock.h:605:59: note: expected 'const char *' but argument is of type 'char'
+ WINSOCK_API_LINKAGE DECLARE_STDCALL_P (struct hostent *)  gethostbyname (const char *);
+                                                           ^~~~~~~~~~~~~
+..\src\Client.c:153:18: warning: format '%s' expects argument of type 'char *', but argument 4 has type 'int' [-Wformat=]
+    printf("%s%s %s: %s%s", "Result received from server ", host_addr, host_name, print_string, receive_string);
+                  ^
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+10:36:27 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+10:40:25 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+10:47:58 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for Server
+Info: Nothing to build for Server
+Info: Nothing to build for Server
+Info: Nothing to build for Server
+Info: Nothing to build for Server
+Info: Nothing to build for Server
+Info: Nothing to build for Server
+10:54:41 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+..\src\Client.c: In function 'main':
+..\src\Client.c:39:19: warning: unused variable 'remote_host' [-Wunused-variable]
+  struct hostent * remote_host;
+                   ^~~~~~~~~~~
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for Server
+11:02:47 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+11:03:53 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+11:10:31 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+..\src\Server.c: In function 'main':
+..\src\Server.c:108:28: error: incompatible type for argument 1 of 'inet_addr'
+    addr.s_addr = inet_addr(client_address.sin_addr);
+                            ^~~~~~~~~~~~~~
+In file included from c:\mingw\include\winsock2.h:62:0,
+                 from ..\src\Server.c:12:
+c:\mingw\include\winsock.h:590:42: note: expected 'const char *' but argument is of type 'struct in_addr'
+ WINSOCK_API_LINKAGE unsigned long PASCAL inet_addr (const char *);
+                                          ^~~~~~~~~
+..\src\Server.c:110:10: warning: unused variable 'canonical_name' [-Wunused-variable]
+    char* canonical_name = host->h_name;
+          ^~~~~~~~~~~~~~
+11:10:58 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+..\src\Server.c: In function 'main':
+..\src\Server.c:110:10: warning: unused variable 'canonical_name' [-Wunused-variable]
+    char* canonical_name = host->h_name;
+          ^~~~~~~~~~~~~~
+..\src\Server.c:111:4: warning: 'remote_host' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    printf("%s%s%s%s%s%s\n", "Requested operation '", client_data, "' from client ", remote_host->h_name, ", ip ", inet_ntoa(client_address.sin_addr));
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+11:11:26 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+..\src\Server.c: In function 'main':
+..\src\Server.c:83:19: warning: unused variable 'remote_host' [-Wunused-variable]
+  struct hostent * remote_host;
+                   ^~~~~~~~~~~
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+11:12:11 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+11:18:15 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+Info: Nothing to build for Server
+11:20:51 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+11:21:20 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Server.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+11:21:30 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Server
+11:26:47 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+Info: Nothing to build for Server
+Info: Nothing to build for Client
+11:33:49 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+11:34:37 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+14:41:13 **** Rebuild of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+Info: Nothing to build for Client
+14:41:22 **** Rebuild of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+14:42:14 **** Incremental Build of configuration Debug for project Server ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Server.o" "..\\src\\Server.c" 
+gcc -o Server.exe "src\\Server.o" -lwsock32 -lwsock32 
+14:43:18 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:43:37 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:44:05 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:45:43 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+..\src\Client.c: In function 'main':
+..\src\Client.c:114:29: error: invalid initializer
+   char * string_tokens[4] = malloc(sizeof(char *) * 4);
+                             ^~~~~~
+14:45:58 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+..\src\Client.c: In function 'main':
+..\src\Client.c:114:29: error: invalid initializer
+   char * string_tokens[4] = malloc(sizeof(char*) * 4);
+                             ^~~~~~
+14:46:52 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Client.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+14:46:59 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:47:45 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:49:20 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:49:41 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Client.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+14:50:01 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Client.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+14:50:05 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:50:26 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:51:06 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:51:28 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:51:48 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:52:28 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+14:53:22 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+15:02:03 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Client.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+15:02:12 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+15:02:33 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+15:03:17 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Client.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+15:03:19 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+15:03:52 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+15:04:20 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+15:07:22 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+..\src\Client.c: In function 'main':
+..\src\Client.c:160:73: error: 'serv_name' undeclared (first use in this function)
+    printf("%s%s %s: %s%s%s", "Result received from server ", host_addr, serv_name, print_string, "=", receive_string);
+                                                                         ^~~~~~~~~
+..\src\Client.c:160:73: note: each undeclared identifier is reported only once for each function it appears in
+15:07:35 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+15:15:05 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Client.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+15:15:14 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 
+15:17:14 **** Incremental Build of configuration Debug for project Client ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Client.o" "..\\src\\Client.c" 
+gcc -o Client.exe "src\\Client.o" -lwsock32 -lwsock32 

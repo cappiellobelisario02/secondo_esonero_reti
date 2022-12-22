@@ -1,0 +1,208 @@
+/*
+ ============================================================================
+ Name        : Server.c
+ Author      : Belisario Cappiello
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#if defined WIN32
+	#include <winsock2.h>
+#else
+	#define closesocket close
+	#include <sys/socket.h>
+	#include <arpa/inet.h>
+	#include <unistd.h>
+	#include <netdb.h>
+#endif
+
+#include "../Headers_operations/headers_operations.h"
+
+void errorHandler(char *);
+void clearWinSock();
+int isNumber(char *);
+int checkChar(char *);
+void tokenizer(char * token[4], char *);
+double operation_switcher(char *, char *, char *, char *);
+
+int main(int argc, char *argv[]) {
+
+	char * server_ip = DEFAULT_ADDRESS;
+	int port = PROTOPORT;
+	printf("%s %s:%d", "Trying to start server on", server_ip, port);
+
+	#if defined WIN32
+		WSADATA wsa_data;
+		int result = WSAStartup(MAKEWORD(2, 2), &wsa_data);
+		if (result != NO_ERROR){
+			printf("%s\n", "Start up failed");
+			return -1;
+		}
+		printf("%s\n", "Start up done correctly");
+	#endif
+
+	int socket_udp;
+	socket_udp = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	if(socket_udp < NO_ERROR){
+		errorHandler("Socket creation failed");
+	}
+	printf("%s\n", "Socket created successfully");
+
+	struct sockaddr_in server_address_struct;
+	unsigned int server_address_size;
+	server_address_size = sizeof(server_address_struct);
+	memset(&server_address_struct, 0, server_address_size);
+	server_address_struct.sin_family = PF_INET;
+	server_address_struct.sin_port = htons(port);
+	server_address_struct.sin_addr.s_addr = inet_addr(server_ip);
+
+	int socket_bind = bind(socket_udp, (struct sockaddr*)&server_address_struct, server_address_size);
+	if(socket_bind < NO_ERROR){
+		errorHandler("Socket binding failed");
+	}else{
+		printf("%s\n", "Successful socket binding");
+	}
+
+	struct sockaddr_in client_address;
+	int client_address_size;
+
+	int continue_loop = 0;
+	while (1){
+		client_address_size = sizeof(client_address);
+
+		char client_data[ECHOMAX];
+		int client_data_size;
+		continue_loop = 1;
+		do{
+			memset(client_data, 0, ECHOMAX);
+			client_data_size = recvfrom(socket_udp, client_data, ECHOMAX - 1, 0, (struct sockaddr*)&client_address, &client_address_size);
+			if(client_data_size < 0){
+				errorHandler("Something went wrong receiving the packet");
+			}
+
+			// Remove the newline char, if there's one
+			int string_len = strlen(client_data);
+			if ((string_len > 0) && (client_data[string_len - 1] == '\n'))
+			{
+				client_data[string_len - 1] = '\0';
+			}
+
+			struct hostent * remote_host;
+			struct in_addr addr;
+			addr.s_addr = inet_addr(inet_ntoa(client_address.sin_addr));
+			remote_host = gethostbyaddr((char *) &addr, 4, AF_INET);
+			char * canonical_name = remote_host->h_name;
+
+			printf("%s%s%s%s%s%s\n", "Requested operation '", client_data, "' from client ", canonical_name, ", ip ", inet_ntoa(client_address.sin_addr));
+
+			char * string_tokens[4];
+			tokenizer(string_tokens, client_data);
+			if(strcmp(string_tokens[0], "=") == 0){
+				continue_loop = 0;
+				printf("%s %s%s", "Closed connection with client", inet_ntoa(client_address.sin_addr), "\n");
+			}else{
+				printf("%s\n", "Performing operation... ");
+				char operation_result[ECHOMAX];
+				memset(operation_result, 0, ECHOMAX);
+				double switcher = operation_switcher(string_tokens[0], string_tokens[1], string_tokens[2], string_tokens[3]);
+				itoa(switcher, operation_result, 10);
+				string_len = strlen(operation_result);
+				Sleep(1000);
+				printf("%s %s \n", "Operation result -> ", operation_result);
+				int data_send_size;
+				data_send_size = sendto(socket_udp, operation_result, string_len, 0, (struct sockaddr*)&client_address, client_address_size);
+				if(data_send_size < 0){
+					errorHandler("Something went wrong sending the packet");
+				}
+				printf("%s", "Operation sent to the client\n");
+			}
+		}while(continue_loop);
+	}
+
+	system("PAUSE");
+	return 0;
+}
+
+void clearWinSock(){
+	#if defined WIN32
+		WSACleanup();
+	#endif
+}
+
+void errorHandler(char * string){
+	printf("%s\n", string);
+}
+
+void tokenizer(char * tokens[4], char * string){
+	char * operation = string;
+	short temp = 0;
+	char * token_string;
+	token_string = strtok(operation, " ");
+
+	if(!checkChar(token_string)){
+		tokens[0] = "=";
+		tokens[1] = NULL;
+		tokens[2] = NULL;
+		tokens[3] = "1";
+	}else{
+		while (token_string != NULL){
+			tokens[temp] = token_string;
+			temp++;
+			token_string = strtok(NULL, " ");
+		}
+		if(temp == 3){
+			int temp_var = temp;
+			char str_temp_var[ECHOMAX];
+			memset(str_temp_var, 0, ECHOMAX);
+			itoa(temp_var, str_temp_var, 10);
+			tokens[temp] = str_temp_var;
+		}
+	}
+}
+
+int checkChar(char * string){
+	if(string[0] == '+' || string[0] == '-' || string[0] == 'x' || string[0] == '/'){
+		return 1;
+	}
+	return 0;
+}
+
+int isNumber(char * string){
+	int length = strlen(string);
+	for (int i = 0; i < length; i++)
+		if (!isdigit(string[i])){
+			printf ("Entered input is not a number\n");
+			return 1;;
+		}
+
+	return 0;
+}
+
+double operation_switcher(char * operator, char * first_operand, char * second_operand, char * token_num){
+	int first_number = atoi(first_operand);
+	int second_number = atoi(second_operand);
+	double op_result;
+
+	switch(operator[0]){
+		case '+':
+			op_result = add(first_number, second_number);
+			break;
+		case '-':
+			op_result = sub(first_number, second_number);
+			break;
+		case 'x':
+			op_result = mult(first_number, second_number);
+			break;
+		case '/':
+			if(second_number == 0) {
+				printf("%s", "Cannot divide by zero\n");
+				return -999999999;
+			}
+			op_result = division(first_number, second_number);
+			break;
+	}
+
+	return op_result;
+}
